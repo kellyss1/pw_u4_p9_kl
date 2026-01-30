@@ -15,6 +15,11 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/consultar-todos">Consultar Todos</RouterLink>
+        <RouterLink to="/consultar-por-id">Consultar Por ID</RouterLink>
+        <RouterLink to="/guardar-estudiante">Guardar Estudiante</RouterLink>
+        <RouterLink to="/actualizar-estudiante">Actualizar Estudiante</RouterLink>
+        <RouterLink to="/actualizar-nombre">Actualizar Nombre</RouterLink>
+        <RouterLink to="/borrar-estudiante">Borrar Estudiante</RouterLink>
       </nav>
     </div>
   </header>
@@ -41,23 +46,34 @@ header {
 
 nav {
   width: 100%;
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   margin-top: 2rem;
 }
 
+nav a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  border: 1px solid #42b883;
+  border-radius: 4px;
+  color: #42b883;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+nav a:hover {
+  background-color: #42b883;
+  color: white;
+}
+
 nav a.router-link-exact-active {
-  color: var(--color-text);
+  background-color: #35495e;
+  color: white;
 }
 
 nav a.router-link-exact-active:hover {
   background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
 }
 
 nav a:first-of-type {
