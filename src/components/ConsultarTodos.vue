@@ -55,72 +55,81 @@ export default {
 
 <style scoped>
 .consultar-todos {
-  padding: 20px;
-  max-width: 1200px;
+  padding: 1.5rem;
+  max-width: 700px;
   margin: 0 auto;
   font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5; /* Fondo más claro para el contenedor */
+  border-radius: 8px; /* Bordes redondeados para el contenedor */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
 }
 
 h1 {
   color: #42b883;
-  margin-bottom: 20px;
-  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 2rem; /* Tamaño de fuente más grande */
+  text-align: center; /* Centrar el título */
 }
 
 button {
   margin: 10px 0 20px 0;
-  padding: 10px 20px;
-  background-color: #35495e;
+  padding: 0.75rem 1.5rem;
+  background-color: #42b883;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background-color: #2c3e50;
+  background-color: #35495e;
+  transform: scale(1.05);
 }
 
 .mensaje-vacio {
   padding: 15px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  color: #666;
+  background-color: #fff3cd; /* Fondo amarillo claro */
+  border: 1px solid #ffeeba; /* Borde amarillo */
+  border-radius: 6px;
+  color: #856404; /* Texto amarillo oscuro */
   text-align: center;
+  font-weight: bold;
 }
 
 .lista-estudiantes {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 15px;
   margin-top: 20px;
 }
 
 .estudiante-card {
-  background: #f9f9f9;
+  background: #ffffff;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 15px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s;
+  border-radius: 8px; /* Bordes más redondeados */
+  padding: 20px; /* Más espacio interno */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s, transform 0.2s; /* Animación más fluida */
 }
 
 .estudiante-card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px); /* Efecto de elevación al pasar el cursor */
 }
 
 .estudiante-card h3 {
   color: #42b883;
   margin-bottom: 10px;
-  font-size: 1.2rem;
+  font-size: 1.5rem; /* Tamaño de fuente más grande */
 }
 
 .detalles p {
   margin: 5px 0;
   color: #333;
+  font-size: 0.95rem; /* Ajuste de tamaño de fuente */
 }
 
 .detalles strong {
@@ -129,34 +138,29 @@ button:hover {
 
 .hijos {
   margin-top: 10px;
-  padding: 10px;
+  padding: 15px; /* Más espacio interno */
   background-color: #eef9f3;
-  border-radius: 4px;
+  border-radius: 6px; /* Bordes más redondeados */
 }
 
 .hijos h4 {
   margin-bottom: 10px;
   color: #35495e;
-  font-size: 1rem;
-}
-
-.hijos ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  font-size: 1.1rem; /* Tamaño de fuente ligeramente mayor */
 }
 
 .hijos li {
   margin: 5px 0;
-  padding: 5px 10px;
+  padding: 8px 12px; /* Más espacio interno */
   background-color: white;
-  border-left: 3px solid #42b883;
-  border-radius: 3px;
+  border-left: 4px solid #42b883; /* Borde más grueso */
+  border-radius: 4px; /* Bordes más redondeados */
 }
 
 .sin-hijos {
   color: #999;
   font-style: italic;
   margin-top: 10px;
+  text-align: center; /* Centrar el texto */
 }
 </style>

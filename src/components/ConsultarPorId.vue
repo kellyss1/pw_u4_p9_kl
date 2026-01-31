@@ -63,16 +63,20 @@ export default {
 
 <style scoped>
 .consultar-por-id {
-  padding: 1rem;
-  max-width: 600px;
+  padding: 1.5rem;
+  max-width: 700px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
+  background-color: #f5f5f5; /* Fondo más claro */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
 }
 
 h1 {
   color: #42b883;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 2rem; /* Título más grande */
+  text-align: center; /* Centrar el título */
 }
 
 label {
@@ -84,10 +88,10 @@ label {
 
 input {
   width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 6px; /* Bordes más redondeados */
   font-size: 1rem;
 }
 
@@ -95,35 +99,41 @@ button {
   background-color: #42b883;
   color: white;
   border: none;
-  padding: 0.75rem;
-  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
   background-color: #35495e;
+  transform: scale(1.05); /* Efecto de zoom */
 }
 
 .error {
   color: #c33;
   background-color: #fee;
-  padding: 0.5rem;
+  padding: 1rem;
   border-left: 4px solid #c33;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  border-radius: 6px;
 }
 
 .estudiante-detalle {
-  margin-top: 1rem;
-  padding: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #f9f9f9;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .estudiante-detalle h2 {
   margin-top: 0;
   color: #35495e;
+  font-size: 1.5rem;
 }
 
 .estudiante-detalle p {
@@ -131,21 +141,17 @@ button:hover {
   color: #333;
 }
 
-.estudiante-detalle strong {
-  color: #35495e;
-}
-
 .hijos {
   margin-top: 10px;
-  padding: 10px;
+  padding: 15px;
   background-color: #eef9f3;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 
 .hijos h3 {
   margin-bottom: 10px;
   color: #35495e;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .hijos ul {
@@ -156,10 +162,10 @@ button:hover {
 
 .hijos li {
   margin: 5px 0;
-  padding: 5px 10px;
+  padding: 8px 12px;
   background-color: white;
-  border-left: 3px solid #42b883;
-  border-radius: 3px;
+  border-left: 4px solid #42b883;
+  border-radius: 4px;
 }
 
 .sin-hijos {

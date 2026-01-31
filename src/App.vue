@@ -1,16 +1,11 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
@@ -35,8 +30,12 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <style scoped>
 header {
+  font-family: 'Verdana', sans-serif; /* Fuente específica para el encabezado */
+  font-size: 18px; /* Tamaño ligeramente mayor para el encabezado */
   line-height: 1.5;
   max-height: 100vh;
+  background-color: #f9f9f9; /* Fondo más claro para el encabezado */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
 }
 
 .logo {
@@ -53,23 +52,26 @@ nav {
 
 nav a {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
-  border: 1px solid #42b883;
-  border-radius: 4px;
+  padding: 0.5rem 1rem; /* Reducir el espacio interno */
+  margin: 0.25rem 0.5rem; /* Ajustar el margen para un diseño más compacto */
+  border: 2px solid #42b883; /* Bordes más gruesos */
+  border-radius: 8px; /* Bordes más redondeados */
   color: #42b883;
   text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
+  font-weight: bold; /* Texto más destacado */
+  transition: background-color 0.3s, color 0.3s, transform 0.2s; /* Animación más fluida */
 }
 
 nav a:hover {
   background-color: #42b883;
   color: white;
+  transform: scale(1.05); /* Efecto de zoom al pasar el cursor */
 }
 
 nav a.router-link-exact-active {
   background-color: #35495e;
   color: white;
+  border-color: #35495e; /* Bordes del mismo color que el fondo activo */
 }
 
 nav a.router-link-exact-active:hover {
@@ -83,8 +85,9 @@ nav a:first-of-type {
 @media (min-width: 1024px) {
   header {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    align-items: center; /* Alineación vertical centrada */
+    justify-content: space-between; /* Espaciado entre logo y navegación */
+    padding: 1rem 2rem; /* Más espacio interno */
   }
 
   .logo {
@@ -99,11 +102,25 @@ nav a:first-of-type {
 
   nav {
     text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
+    margin-left: 0; /* Ajuste de margen */
+    font-size: 1.125rem; /* Tamaño de fuente ligeramente mayor */
     padding: 1rem 0;
     margin-top: 1rem;
   }
+}
+
+/* Estilo general para las letras */
+body {
+  font-family: 'Arial', sans-serif; /* Fuente general para todo el sitio */
+  font-size: 16px; /* Tamaño base de fuente */
+  color: #333; /* Color de texto principal */
+  line-height: 1.6; /* Altura de línea para mejor legibilidad */
+}
+
+/* Ajuste del tamaño de las pestañas (enlaces de navegación) */
+nav a {
+  padding: 0.5rem 1rem; /* Reducir el espacio interno */
+  font-size: 0.875rem; /* Reducir el tamaño de la fuente */
+  margin: 0.25rem 0.5rem; /* Ajustar el margen para un diseño más compacto */
 }
 </style>
