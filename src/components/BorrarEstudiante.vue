@@ -44,7 +44,7 @@ export default {
 .borrar-estudiante {
   padding: 1.5rem;
   max-width: 700px;
-  margin: 0 auto;
+  margin: 2rem auto 0 auto;
   font-family: Arial, sans-serif;
   background-color: #f5f5f5; /* Fondo más claro */
   border-radius: 8px; /* Bordes redondeados */

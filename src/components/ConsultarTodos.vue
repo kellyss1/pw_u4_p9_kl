@@ -7,26 +7,38 @@
       No hay estudiantes cargados. Haz clic en "Cargar Estudiantes"
     </div>
     
-    <div v-else class="lista-estudiantes">
-      <div v-for="estudiante in estudiantes" :key="estudiante.id" class="estudiante-card">
-        <h3>{{ estudiante.nombre }} {{ estudiante.apellido }}</h3>
-        <div class="detalles">
-          <p><strong>ID:</strong> {{ estudiante.id }}</p>
-          <p><strong>Fecha de Nacimiento:</strong> {{ formatearFecha(estudiante.fechaNacimiento) }}</p>
-          <p><strong>Provincia:</strong> {{ estudiante.provincia }}</p>
-          <p><strong>Género:</strong> {{ estudiante.genero }}</p>
-          
-          <div v-if="estudiante.hijos && estudiante.hijos.length > 0" class="hijos">
-            <h4>Hijos:</h4>
-            <ul>
-              <li v-for="hijo in estudiante.hijos" :key="hijo.id">
-                {{ hijo.nombre }} - {{ hijo.edad }} años
-              </li>
-            </ul>
-          </div>
-          <p v-else class="sin-hijos">Sin hijos</p>
-        </div>
-      </div>
+    <div v-else class="tabla-container">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Provincia</th>
+            <th>Género</th>
+            <th>Hijos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="estudiante in estudiantes" :key="estudiante.id">
+            <td>{{ estudiante.id }}</td>
+            <td>{{ estudiante.nombre }}</td>
+            <td>{{ estudiante.apellido }}</td>
+            <td>{{ formatearFecha(estudiante.fechaNacimiento) }}</td>
+            <td>{{ estudiante.provincia }}</td>
+            <td>{{ estudiante.genero }}</td>
+            <td>
+              <div v-if="estudiante.hijos && estudiante.hijos.length > 0">
+                <div v-for="hijo in estudiante.hijos" :key="hijo.id" class="hijo-item">
+                  {{ hijo.nombre }} ({{ hijo.edad }} años)
+                </div>
+              </div>
+              <span v-else class="sin-hijos">Sin hijos</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -57,7 +69,7 @@ export default {
 .consultar-todos {
   padding: 1.5rem;
   max-width: 700px;
-  margin: 0 auto;
+  margin: 2rem auto 0 auto;
   font-family: 'Arial', sans-serif;
   background-color: #f5f5f5; /* Fondo más claro para el contenedor */
   border-radius: 8px; /* Bordes redondeados para el contenedor */
@@ -99,68 +111,62 @@ button:hover {
   font-weight: bold;
 }
 
-.lista-estudiantes {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.tabla-container {
   margin-top: 20px;
+  overflow-x: auto;
 }
 
-.estudiante-card {
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px; /* Bordes más redondeados */
-  padding: 20px; /* Más espacio interno */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s, transform 0.2s; /* Animación más fluida */
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.estudiante-card:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-5px); /* Efecto de elevación al pasar el cursor */
+thead {
+  background-color: #42b883;
+  color: white;
 }
 
-.estudiante-card h3 {
-  color: #42b883;
-  margin-bottom: 10px;
-  font-size: 1.5rem; /* Tamaño de fuente más grande */
+th {
+  padding: 15px;
+  text-align: left;
+  font-weight: bold;
+  font-size: 0.95rem;
 }
 
-.detalles p {
-  margin: 5px 0;
+tbody tr {
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+td {
+  padding: 12px 15px;
   color: #333;
-  font-size: 0.95rem; /* Ajuste de tamaño de fuente */
+  font-size: 0.9rem;
 }
 
-.detalles strong {
-  color: #35495e;
-}
-
-.hijos {
-  margin-top: 10px;
-  padding: 15px; /* Más espacio interno */
+.hijo-item {
+  padding: 4px 8px;
+  margin: 2px 0;
   background-color: #eef9f3;
-  border-radius: 6px; /* Bordes más redondeados */
-}
-
-.hijos h4 {
-  margin-bottom: 10px;
-  color: #35495e;
-  font-size: 1.1rem; /* Tamaño de fuente ligeramente mayor */
-}
-
-.hijos li {
-  margin: 5px 0;
-  padding: 8px 12px; /* Más espacio interno */
-  background-color: white;
-  border-left: 4px solid #42b883; /* Borde más grueso */
-  border-radius: 4px; /* Bordes más redondeados */
+  border-left: 3px solid #42b883;
+  border-radius: 3px;
+  font-size: 0.85rem;
 }
 
 .sin-hijos {
   color: #999;
   font-style: italic;
-  margin-top: 10px;
-  text-align: center; /* Centrar el texto */
 }
 </style>
