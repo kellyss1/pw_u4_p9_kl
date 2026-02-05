@@ -1,25 +1,35 @@
 import axios from 'axios';
- 
+import { getToken } from './UsuarioClient.js';
+
+const URL = 'http://localhost:8081/matricula/api/v1.0/estudiantes';
+
+// Configurar interceptor de axios para agregar el token automáticamente
+axios.interceptors.request.use(async (config) => {
+    const token = await getToken();
+    config.headers.Authorization = `Bearer ${token}`;
+    return config;
+});
+
 const ConsultarTodos = async () => {
-    const data = axios.get('http://localhost:8081/matricula/api/v1.0/estudiantes').then(response => response.data);
+    const data = axios.get(URL).then(response => response.data);
     console.log(data);
     return data;
 }
  
 const consutarPorId = async (id) => {
-    const data = axios.get(`http://localhost:8081/matricula/api/v1.0/estudiantes/${id}`).then(response => response.data);
+    const data = axios.get(`${URL}/${id}`).then(response => response.data);
     console.log(data);
     return data;
 }
  
 const guardar = async (body) => {
-    const data = axios.post('http://localhost:8081/matricula/api/v1.0/estudiantes', body).then(response => response.data);
+    const data = axios.post(URL, body).then(response => response.data);
     console.log(data);
     return data;
 }
  
 const actualizar = async (id, body) => {
-    const data = axios.put(`http://localhost:8081/matricula/api/v1.0/estudiantes/${id}`, body).then(response => response.data);
+    const data = axios.put(`${URL}/${id}`, body).then(response => response.data);
     console.log(data);
     return data;
 }
