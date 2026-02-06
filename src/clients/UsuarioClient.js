@@ -1,31 +1,42 @@
 import axios from 'axios';
 
-const user = "kelly";
-const password = "123";
 const AUTH_URL = 'http://localhost:8082/auth/token';
 
-let cachedToken = null;
-let tokenExpiry = null;
+export const getAuthToken = () => localStorage.getItem('authToken');
+export const getTokenExpiresAt = () => localStorage.getItem('tokenExpiresAt');
 
-export async function getToken() {
-    // Validar si el token en cache sigue siendo válido
-    if (cachedToken && tokenExpiry && new Date().getTime() < tokenExpiry * 1000) {
-        return cachedToken;
-    }
+export const isTokenValid = () => {
+    const token = getAuthToken();
+    const expiresAt = Number(getTokenExpiresAt());
+    if (!token || !expiresAt) return false;
+    return Date.now() < expiresAt * 1000;
+};
 
+export const setAuth = (token, expiresAt) => {
+    localStorage.setItem('authToken', token);
+    localStorage.setItem('tokenExpiresAt', String(expiresAt));
+    localStorage.setItem('estaAutenticado', 'true');
+};
+
+export const clearAuth = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('tokenExpiresAt');
+    localStorage.setItem('estaAutenticado', 'false');
+};
+
+export async function getToken(username, password) {
     try {
         const response = await axios.get(AUTH_URL, {
             params: {
-                user: user,
+                user: username,
                 password: password
             }
         });
 
-        cachedToken = response.data.accessToken;
-        tokenExpiry = response.data.expiresAt;
+        const token = response.data.accessToken;
+        const expiresAt = response.data.expiresAt;
 
-        console.log('Token OAuth 2.0 obtenido exitosamente');
-        return cachedToken;
+        return { token, expiresAt };
     } catch (error) {
         console.error('Error al obtener el token:', error);
         throw error;

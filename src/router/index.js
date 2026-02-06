@@ -6,8 +6,14 @@ import GuardarEstudianteView from '../views/GuardarEstudianteView.vue'
 import ActualizarEstudianteView from '../views/ActualizarEstudianteView.vue'
 import ActualizarNombreView from '../views/ActualizarNombreView.vue'
 import BorrarEstudiante from '@/components/BorrarEstudiante.vue'
+import LoginView from '@/views/LoginView.vue'
 
 const routes = [
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView,
+  },
   {
     path: '/',
     name: 'home',
@@ -70,8 +76,19 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if(to.meta.requiresAuth) {
     // Le envio a una pagina de login
-    console.log("Ruta protegida, requiere autenticacion");
-    console.log("Redirigiendo a la pagina de login...");
+    const authToken = localStorage.getItem('authToken');
+    const tokenExpiresAt = Number(localStorage.getItem('tokenExpiresAt'));
+    const estaAutenticado = authToken && tokenExpiresAt && Date.now() < tokenExpiresAt * 1000;
+
+    if(!estaAutenticado) {
+      console.log("Ruta protegida, no hay token de autenticacion");
+      console.log("Redirigiendo a la pagina de login...");
+      next({ name: 'login' });
+    } else {
+      console.log("Ruta protegida, token de autenticacion valido");
+      next();
+    }
+    
   } else {
     //No requiere autenticacion
     console.log("Pase Libre, no requiere autenticacion");
